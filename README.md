@@ -1,5 +1,5 @@
-ToDo-list on
-	React 
-	Redux
-	Node.js
-	MongoDB 
+# ToDo-list on
+# React 
+# Redux
+# Node.js
+# MongoDB 
