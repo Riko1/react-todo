@@ -64,7 +64,7 @@
 	var Default = __webpack_require__(562);
 	var TaskList = __webpack_require__(568);
 
-	var store = __webpack_require__(572);
+	var store = __webpack_require__(588);
 
 	$(function () {
 		ReactDOM.render(React.createElement(
@@ -47688,9 +47688,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	__webpack_require__(569);
-	__webpack_require__(582);
+	__webpack_require__(571);
 
-	var TaskItem = __webpack_require__(571);
+	var TaskItem = __webpack_require__(584);
 
 	var _require = __webpack_require__(535),
 	    connect = _require.connect;
@@ -47698,8 +47698,8 @@
 	var _require2 = __webpack_require__(542),
 	    bindActionCreators = _require2.bindActionCreators;
 
-	var taskActions = __webpack_require__(579);
-	var Popup = __webpack_require__(581);
+	var taskActions = __webpack_require__(585);
+	var Popup = __webpack_require__(587);
 
 	var TaskList = function (_React$Component) {
 		_inherits(TaskList, _React$Component);
@@ -47708,18 +47708,6 @@
 			_classCallCheck(this, TaskList);
 
 			var _this = _possibleConstructorReturn(this, (TaskList.__proto__ || Object.getPrototypeOf(TaskList)).call(this, props));
-
-			_this.data = [{
-				title: 'Задача №1',
-				description: 'desc',
-				date: '26.03.2016',
-				status: ''
-			}, {
-				title: 'Задача с длинным пре длинным заголовком',
-				description: 'desc2',
-				date: '20.03.2016',
-				status: 'complete'
-			}];
 
 			_this.openPopup = _this.openPopup.bind(_this);
 			_this.add = _this.add.bind(_this);
@@ -47807,645 +47795,24 @@
 /* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var TaskItem = function (_React$Component) {
-		_inherits(TaskItem, _React$Component);
-
-		function TaskItem(props) {
-			_classCallCheck(this, TaskItem);
-
-			return _possibleConstructorReturn(this, (TaskItem.__proto__ || Object.getPrototypeOf(TaskItem)).call(this, props));
-		}
-
-		_createClass(TaskItem, [{
-			key: "render",
-			value: function render() {
-				var data = this.props;
-				return React.createElement(
-					"div",
-					{ className: "task-item clearfix " + data.status },
-					React.createElement(
-						"div",
-						{ className: "task-item__name" },
-						React.createElement(
-							"span",
-							null,
-							data.title
-						)
-					),
-					React.createElement("div", { className: "task-item__status" }),
-					React.createElement(
-						"div",
-						{ className: "task-item__description" },
-						data.description,
-						React.createElement(
-							"div",
-							{ className: "task-item__date" },
-							data.date
-						)
-					)
-				);
-			}
-		}]);
-
-		return TaskItem;
-	}(React.Component);
-
-	module.exports = TaskItem;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(179)))
-
-/***/ },
-/* 572 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var redux = __webpack_require__(542);
-	var thunk = __webpack_require__(573).default;
-	var promise = __webpack_require__(574);
-	var reducer = __webpack_require__(576);
-
-	var middleWare = redux.applyMiddleware(thunk);
-	var store = redux.createStore(reducer, {}, middleWare);
-
-	module.exports = store;
-
-/***/ },
-/* 573 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	function createThunkMiddleware(extraArgument) {
-	  return function (_ref) {
-	    var dispatch = _ref.dispatch;
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        if (typeof action === 'function') {
-	          return action(dispatch, getState, extraArgument);
-	        }
-
-	        return next(action);
-	      };
-	    };
-	  };
-	}
-
-	var thunk = createThunkMiddleware();
-	thunk.withExtraArgument = createThunkMiddleware;
-
-	exports['default'] = thunk;
-
-/***/ },
-/* 574 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	} : function (obj) {
-	  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	};
-
-	var _extends = Object.assign || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }return target;
-	};
-
-	var _slicedToArray = function () {
-	  function sliceIterator(arr, i) {
-	    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {
-	      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-	        _arr.push(_s.value);if (i && _arr.length === i) break;
-	      }
-	    } catch (err) {
-	      _d = true;_e = err;
-	    } finally {
-	      try {
-	        if (!_n && _i["return"]) _i["return"]();
-	      } finally {
-	        if (_d) throw _e;
-	      }
-	    }return _arr;
-	  }return function (arr, i) {
-	    if (Array.isArray(arr)) {
-	      return arr;
-	    } else if (Symbol.iterator in Object(arr)) {
-	      return sliceIterator(arr, i);
-	    } else {
-	      throw new TypeError("Invalid attempt to destructure non-iterable instance");
-	    }
-	  };
-	}();
-
-	exports.default = promiseMiddleware;
-
-	var _isPromise = __webpack_require__(575);
-
-	var _isPromise2 = _interopRequireDefault(_isPromise);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	var defaultTypes = ['PENDING', 'FULFILLED', 'REJECTED'];
-
-	/**
-	 * @function promiseMiddleware
-	 * @description
-	 * @returns {function} thunk
-	 */
-	function promiseMiddleware() {
-	  var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-	  var promiseTypeSuffixes = config.promiseTypeSuffixes || defaultTypes;
-
-	  return function (ref) {
-	    var dispatch = ref.dispatch;
-
-	    return function (next) {
-	      return function (action) {
-	        if (action.payload) {
-	          if (!(0, _isPromise2.default)(action.payload) && !(0, _isPromise2.default)(action.payload.promise)) {
-	            return next(action);
-	          }
-	        } else {
-	          return next(action);
-	        }
-
-	        // Deconstruct the properties of the original action object to constants
-	        var type = action.type,
-	            payload = action.payload,
-	            meta = action.meta;
-
-	        // Assign values for promise type suffixes
-
-	        var _promiseTypeSuffixes = _slicedToArray(promiseTypeSuffixes, 3),
-	            PENDING = _promiseTypeSuffixes[0],
-	            FULFILLED = _promiseTypeSuffixes[1],
-	            REJECTED = _promiseTypeSuffixes[2];
-
-	        /**
-	         * @function getAction
-	         * @description Utility function for creating a rejected or fulfilled
-	         * flux standard action object.
-	         * @param {boolean} Is the action rejected?
-	         * @returns {object} action
-	         */
-
-	        var getAction = function getAction(newPayload, isRejected) {
-	          return _extends({
-	            type: type + '_' + (isRejected ? REJECTED : FULFILLED)
-	          }, newPayload === null || typeof newPayload === 'undefined' ? {} : {
-	            payload: newPayload
-	          }, meta !== undefined ? { meta: meta } : {}, isRejected ? {
-	            error: true
-	          } : {});
-	        };
-
-	        /**
-	         * Assign values for promise and data variables. In the case the payload
-	         * is an object with a `promise` and `data` property, the values of those
-	         * properties will be used. In the case the payload is a promise, the
-	         * value of the payload will be used and data will be null.
-	         */
-	        var promise = void 0;
-	        var data = void 0;
-
-	        if (!(0, _isPromise2.default)(action.payload) && _typeof(action.payload) === 'object') {
-	          promise = payload.promise;
-	          data = payload.data;
-	        } else {
-	          promise = payload;
-	          data = undefined;
-	        }
-
-	        /**
-	         * First, dispatch the pending action. This flux standard action object
-	         * describes the pending state of a promise and will include any data
-	         * (for optimistic updates) and/or meta from the original action.
-	         */
-	        next(_extends({
-	          type: type + '_' + PENDING
-	        }, data !== undefined ? { payload: data } : {}, meta !== undefined ? { meta: meta } : {}));
-
-	        /*
-	         * @function handleReject
-	         * @description Dispatch the rejected action and return
-	         * an error object. The error object is the original error
-	         * that was thrown. The user of the library is responsible for
-	         * best practices in ensure that they are throwing an Error object.
-	         * @params reason The reason the promise was rejected
-	         * @returns {object}
-	         */
-	        var handleReject = function handleReject(reason) {
-	          var rejectedAction = getAction(reason, true);
-	          dispatch(rejectedAction);
-	          throw reason;
-	        };
-
-	        /*
-	         * @function handleFulfill
-	         * @description Dispatch the fulfilled action and
-	         * return the success object. The success object should
-	         * contain the value and the dispatched action.
-	         * @param value The value the promise was resloved with
-	         * @returns {object}
-	         */
-	        var handleFulfill = function handleFulfill() {
-	          var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-	          var resolvedAction = getAction(value, false);
-	          dispatch(resolvedAction);
-
-	          return { value: value, action: resolvedAction };
-	        };
-
-	        /**
-	         * Second, dispatch a rejected or fulfilled action. This flux standard
-	         * action object will describe the resolved state of the promise. In
-	         * the case of a rejected promise, it will include an `error` property.
-	         *
-	         * In order to allow proper chaining of actions using `then`, a new
-	         * promise is constructed and returned. This promise will resolve
-	         * with two properties: (1) the value (if fulfilled) or reason
-	         * (if rejected) and (2) the flux standard action.
-	         *
-	         * Rejected object:
-	         * {
-	         *   reason: ...
-	         *   action: {
-	         *     error: true,
-	         *     type: 'ACTION_REJECTED',
-	         *     payload: ...
-	         *   }
-	         * }
-	         *
-	         * Fulfilled object:
-	         * {
-	         *   value: ...
-	         *   action: {
-	         *     type: 'ACTION_FULFILLED',
-	         *     payload: ...
-	         *   }
-	         * }
-	         */
-	        return promise.then(handleFulfill, handleReject);
-	      };
-	    };
-	  };
-	}
-
-/***/ },
-/* 575 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	} : function (obj) {
-	  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-	};
-
-	exports.default = isPromise;
-	function isPromise(value) {
-	  if (value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-	    return value && typeof value.then === 'function';
-	  }
-
-	  return false;
-	}
-
-/***/ },
-/* 576 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _require = __webpack_require__(542),
-	    combineReducers = _require.combineReducers;
-
-	var task = __webpack_require__(577);
-	var user = __webpack_require__(578);
-
-	var rootReducer = combineReducers({ task: task, user: user });
-
-	module.exports = rootReducer;
-
-/***/ },
-/* 577 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var actions = __webpack_require__(580);
-	var initState = {
-		tasks: []
-	};
-
-	var taskReducer = function taskReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
-		var action = arguments[1];
-
-		switch (action.type) {
-			case actions.TASK_GET:
-				{
-					return _extends({}, state);
-				}break;
-			case actions.TASK_GET_ALL:
-				{
-					return _extends({}, state);
-				}break;
-			case actions.TASK_ADD:
-				{
-					var tasks = state.tasks.slice();
-					tasks.push(action.payload);
-					return _extends({}, state, { tasks: tasks });
-				}break;
-			case actions.TASK_EDIT:
-				{
-					return _extends({}, state);
-				}break;
-			case actions.TASK_REMOVE:
-				{
-					return _extends({}, state);
-				}break;
-			default:
-				{
-					return state;
-				}
-		}
-	};
-
-	module.exports = taskReducer;
-
-/***/ },
-/* 578 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var initState = {
-		user: {
-			id: null,
-			name: 'Anonim'
-		}
-	};
-
-	var userReducer = function userReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
-		var action = arguments[1];
-
-		return state;
-	};
-
-	module.exports = userReducer;
-
-/***/ },
-/* 579 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var actions = __webpack_require__(580);
-
-	var TaskActions = {
-		get: function get(id) {
-			return {
-				type: actions.TASK_GET,
-				payload: id
-			};
-		},
-		getAll: function getAll() {
-			return {
-				type: actions.TASK_GET_ALL,
-				payload: null
-			};
-		},
-		add: function add(task) {
-			return {
-				type: actions.TASK_ADD,
-				payload: task
-			};
-		},
-		edit: function edit(task) {
-			return {
-				type: actions.TASK_EDIT,
-				payload: task
-			};
-		},
-		remove: function remove(id) {
-			return {
-				type: actions.TASK_REMOVE,
-				payload: id
-			};
-		}
-	};
-
-	module.exports = TaskActions;
-
-/***/ },
-/* 580 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var TASK_GET = 'TASK_GET';
-	var TASK_GET_ALL = 'TASK_GET_ALL';
-	var TASK_ADD = 'TASK_ADD';
-	var TASK_EDIT = 'TASK_EDIT';
-	var TASK_REMOVE = 'TASK_EDIT';
-
-	module.exports = {
-		TASK_GET: TASK_GET,
-		TASK_GET_ALL: TASK_GET_ALL,
-		TASK_ADD: TASK_ADD,
-		TASK_EDIT: TASK_EDIT,
-		TASK_REMOVE: TASK_REMOVE
-	};
-
-/***/ },
-/* 581 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Popup = function (_React$Component) {
-		_inherits(Popup, _React$Component);
-
-		function Popup(props) {
-			_classCallCheck(this, Popup);
-
-			var _this = _possibleConstructorReturn(this, (Popup.__proto__ || Object.getPrototypeOf(Popup)).call(this, props));
-
-			_this.onAdd = _this.onAdd.bind(_this);
-			return _this;
-		}
-
-		_createClass(Popup, [{
-			key: "onAdd",
-			value: function onAdd() {
-				var date = new Date();
-				var date_str = date.getDay() + 1 + "." + (date.getMonth() + 1) + "." + date.getYear();
-				console.log(date_str);
-				var task = {
-					title: this.refs.title.value,
-					description: this.refs.description.value,
-					status: '',
-					date: date_str
-				};
-				this.props.add(task);
-			}
-		}, {
-			key: "render",
-			value: function render() {
-				return React.createElement(
-					"div",
-					{ id: "modal", className: "modal fade bs-example-modal-sm", tabIndex: "-1", role: "dialog", "aria-labelledby": "mySmallModalLabel" },
-					React.createElement(
-						"div",
-						{ className: "modal-dialog modal-sm", role: "document" },
-						React.createElement(
-							"div",
-							{ className: "modal-content" },
-							React.createElement(
-								"div",
-								{ className: "modal-header" },
-								React.createElement(
-									"button",
-									{ type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
-									React.createElement(
-										"span",
-										{ "aria-hidden": "true" },
-										"\xD7"
-									)
-								),
-								React.createElement(
-									"h4",
-									{ className: "modal-title", id: "myModalLabel" },
-									"\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u0434\u0430\u0447\u0443"
-								)
-							),
-							React.createElement(
-								"div",
-								{ className: "modal-body" },
-								React.createElement(
-									"form",
-									null,
-									React.createElement(
-										"div",
-										{ className: "form-group" },
-										React.createElement(
-											"label",
-											{ htmlFor: "title" },
-											"\u0417\u0430\u0434\u0430\u0447\u0430"
-										),
-										React.createElement("input", {
-											ref: "title",
-											type: "text",
-											className: "form-control",
-											placeholder: "\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A"
-										})
-									),
-									React.createElement(
-										"div",
-										{ className: "form-group" },
-										React.createElement(
-											"label",
-											{ htmlFor: "title" },
-											"\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435"
-										),
-										React.createElement("textarea", {
-											ref: "description",
-											className: "form-control",
-											placeholder: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435"
-										})
-									),
-									React.createElement(
-										"div",
-										{
-											type: "submit",
-											className: "button btn btn-success",
-											onClick: this.onAdd
-										},
-										" \u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C "
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-
-		return Popup;
-	}(React.Component);
-
-	module.exports = Popup;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(179)))
-
-/***/ },
-/* 582 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	// This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
+	__webpack_require__(572);
+	__webpack_require__(573);
+	__webpack_require__(574);
+	__webpack_require__(575);
+	__webpack_require__(576);
+	__webpack_require__(577);
+	__webpack_require__(578);
+	__webpack_require__(579);
+	__webpack_require__(580);
+	__webpack_require__(581);
+	__webpack_require__(582);
 	__webpack_require__(583);
-	__webpack_require__(584);
-	__webpack_require__(585);
-	__webpack_require__(586);
-	__webpack_require__(587);
-	__webpack_require__(588);
-	__webpack_require__(589);
-	__webpack_require__(590);
-	__webpack_require__(591);
-	__webpack_require__(592);
-	__webpack_require__(593);
-	__webpack_require__(594);
 
 /***/ },
-/* 583 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -48514,7 +47881,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 584 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -48607,7 +47974,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 585 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -48733,7 +48100,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 586 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -48969,7 +48336,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 587 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -49159,7 +48526,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 588 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -49317,7 +48684,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 589 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -49631,7 +48998,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 590 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -50129,7 +49496,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 591 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -50238,7 +49605,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 592 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -50399,7 +49766,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 593 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -50535,7 +49902,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 594 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
@@ -50695,6 +50062,680 @@
 	  });
 	}(jQuery);
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 584 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React, $) {'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TaskItem = function (_React$Component) {
+		_inherits(TaskItem, _React$Component);
+
+		function TaskItem(props) {
+			_classCallCheck(this, TaskItem);
+
+			var _this = _possibleConstructorReturn(this, (TaskItem.__proto__ || Object.getPrototypeOf(TaskItem)).call(this, props));
+
+			_this.onClick = _this.onClick.bind(_this);
+			return _this;
+		}
+
+		_createClass(TaskItem, [{
+			key: 'onClick',
+			value: function onClick(proxy, event) {
+				var DOM_desc = $(this.refs.description);
+				if (!DOM_desc.hasClass('opened')) {
+					$(this.refs.item).parent().find('.opened').removeClass('opened').slideUp(300);
+
+					DOM_desc.addClass('opened').slideDown(300);
+				} else {
+					DOM_desc.removeClass('opened').slideUp(300);
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var data = this.props;
+				return React.createElement(
+					'div',
+					{
+						ref: 'item',
+						className: "task-item clearfix " + data.status,
+						onClick: this.onClick
+					},
+					React.createElement(
+						'div',
+						{ className: 'clearfix' },
+						React.createElement(
+							'div',
+							{ className: 'task-item__name' },
+							React.createElement(
+								'span',
+								null,
+								data.title
+							)
+						),
+						React.createElement('div', { className: 'task-item__status' })
+					),
+					React.createElement(
+						'div',
+						{ className: 'task-item__description', ref: 'description' },
+						data.description,
+						React.createElement(
+							'i',
+							{ className: 'task-item__date' },
+							data.date
+						)
+					)
+				);
+			}
+		}]);
+
+		return TaskItem;
+	}(React.Component);
+
+	module.exports = TaskItem;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(179), __webpack_require__(1)))
+
+/***/ },
+/* 585 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var actions = __webpack_require__(586);
+
+	var TaskActions = {
+		get: function get(id) {
+			return {
+				type: actions.TASK_GET,
+				payload: id
+			};
+		},
+		getAll: function getAll() {
+			return {
+				type: actions.TASK_GET_ALL,
+				payload: null
+			};
+		},
+		add: function add(task) {
+			return {
+				type: actions.TASK_ADD,
+				payload: task
+			};
+		},
+		edit: function edit(task) {
+			return {
+				type: actions.TASK_EDIT,
+				payload: task
+			};
+		},
+		remove: function remove(id) {
+			return {
+				type: actions.TASK_REMOVE,
+				payload: id
+			};
+		}
+	};
+
+	module.exports = TaskActions;
+
+/***/ },
+/* 586 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var TASK_GET = 'TASK_GET';
+	var TASK_GET_ALL = 'TASK_GET_ALL';
+	var TASK_ADD = 'TASK_ADD';
+	var TASK_EDIT = 'TASK_EDIT';
+	var TASK_REMOVE = 'TASK_EDIT';
+
+	module.exports = {
+		TASK_GET: TASK_GET,
+		TASK_GET_ALL: TASK_GET_ALL,
+		TASK_ADD: TASK_ADD,
+		TASK_EDIT: TASK_EDIT,
+		TASK_REMOVE: TASK_REMOVE
+	};
+
+/***/ },
+/* 587 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React, $) {'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(595);
+
+	var Popup = function (_React$Component) {
+		_inherits(Popup, _React$Component);
+
+		function Popup(props) {
+			_classCallCheck(this, Popup);
+
+			var _this = _possibleConstructorReturn(this, (Popup.__proto__ || Object.getPrototypeOf(Popup)).call(this, props));
+
+			_this.onAdd = _this.onAdd.bind(_this);
+			_this.getTimeString = _this.getTimeString.bind(_this);
+			_this.clearForm = _this.clearForm.bind(_this);
+			return _this;
+		}
+
+		_createClass(Popup, [{
+			key: 'clearForm',
+			value: function clearForm() {
+				$(this.refs.form).find('input').val('');
+				$(this.refs.form).find('textarea').val('');
+			}
+		}, {
+			key: 'getTimeString',
+			value: function getTimeString() {
+				var date = new Date();
+				var day = date.getDay() + 1 < 10 ? '0' + (date.getDay() + 1) : date.getDay() + 1;
+				var month = date.getMonth() + 1 < 10 ? '0' + (date.getDay() + 1) : date.getMonth() + 1;
+				var year = date.getFullYear();
+				var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+				var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+				var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+
+				return day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+			}
+		}, {
+			key: 'onAdd',
+			value: function onAdd(proxy, event) {
+				proxy.preventDefault();
+
+				var task = {
+					title: this.refs.title.value,
+					description: this.refs.description.value,
+					status: '',
+					date: this.getTimeString()
+				};
+				this.clearForm();
+				this.props.add(task);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ id: 'modal', className: 'modal fade bs-example-modal-sm', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'mySmallModalLabel' },
+					React.createElement(
+						'div',
+						{ className: 'modal-dialog modal-sm', role: 'document' },
+						React.createElement(
+							'div',
+							{ className: 'modal-content' },
+							React.createElement(
+								'div',
+								{ className: 'modal-header' },
+								React.createElement(
+									'button',
+									{ type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+									React.createElement(
+										'span',
+										{ 'aria-hidden': 'true' },
+										'\xD7'
+									)
+								),
+								React.createElement(
+									'h4',
+									{ className: 'modal-title', id: 'myModalLabel' },
+									'\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u0434\u0430\u0447\u0443'
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'modal-body' },
+								React.createElement(
+									'form',
+									{ ref: 'form', onSubmit: this.onAdd },
+									React.createElement(
+										'div',
+										{ className: 'form-group' },
+										React.createElement(
+											'label',
+											{ htmlFor: 'title' },
+											'\u0417\u0430\u0434\u0430\u0447\u0430'
+										),
+										React.createElement('input', {
+											autoFocus: true,
+											ref: 'title',
+											type: 'text',
+											className: 'form-control',
+											placeholder: '\u0417\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A'
+										})
+									),
+									React.createElement(
+										'div',
+										{ className: 'form-group' },
+										React.createElement(
+											'label',
+											{ htmlFor: 'title' },
+											'\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+										),
+										React.createElement('textarea', {
+											ref: 'description',
+											className: 'form-control',
+											placeholder: '\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435'
+										})
+									),
+									React.createElement(
+										'div',
+										{
+											type: 'submit',
+											className: 'button btn btn-success',
+											onClick: this.onAdd
+										},
+										' \u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C '
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return Popup;
+	}(React.Component);
+
+	module.exports = Popup;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(179), __webpack_require__(1)))
+
+/***/ },
+/* 588 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var redux = __webpack_require__(542);
+	var thunk = __webpack_require__(589).default;
+	var promise = __webpack_require__(590);
+	var reducer = __webpack_require__(592);
+
+	var middleWare = redux.applyMiddleware(thunk);
+	var store = redux.createStore(reducer, {}, middleWare);
+
+	module.exports = store;
+
+/***/ },
+/* 589 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch;
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
+
+	        return next(action);
+	      };
+	    };
+	  };
+	}
+
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+
+	exports['default'] = thunk;
+
+/***/ },
+/* 590 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	} : function (obj) {
+	  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	};
+
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+
+	var _slicedToArray = function () {
+	  function sliceIterator(arr, i) {
+	    var _arr = [];var _n = true;var _d = false;var _e = undefined;try {
+	      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+	        _arr.push(_s.value);if (i && _arr.length === i) break;
+	      }
+	    } catch (err) {
+	      _d = true;_e = err;
+	    } finally {
+	      try {
+	        if (!_n && _i["return"]) _i["return"]();
+	      } finally {
+	        if (_d) throw _e;
+	      }
+	    }return _arr;
+	  }return function (arr, i) {
+	    if (Array.isArray(arr)) {
+	      return arr;
+	    } else if (Symbol.iterator in Object(arr)) {
+	      return sliceIterator(arr, i);
+	    } else {
+	      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+	    }
+	  };
+	}();
+
+	exports.default = promiseMiddleware;
+
+	var _isPromise = __webpack_require__(591);
+
+	var _isPromise2 = _interopRequireDefault(_isPromise);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var defaultTypes = ['PENDING', 'FULFILLED', 'REJECTED'];
+
+	/**
+	 * @function promiseMiddleware
+	 * @description
+	 * @returns {function} thunk
+	 */
+	function promiseMiddleware() {
+	  var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+	  var promiseTypeSuffixes = config.promiseTypeSuffixes || defaultTypes;
+
+	  return function (ref) {
+	    var dispatch = ref.dispatch;
+
+	    return function (next) {
+	      return function (action) {
+	        if (action.payload) {
+	          if (!(0, _isPromise2.default)(action.payload) && !(0, _isPromise2.default)(action.payload.promise)) {
+	            return next(action);
+	          }
+	        } else {
+	          return next(action);
+	        }
+
+	        // Deconstruct the properties of the original action object to constants
+	        var type = action.type,
+	            payload = action.payload,
+	            meta = action.meta;
+
+	        // Assign values for promise type suffixes
+
+	        var _promiseTypeSuffixes = _slicedToArray(promiseTypeSuffixes, 3),
+	            PENDING = _promiseTypeSuffixes[0],
+	            FULFILLED = _promiseTypeSuffixes[1],
+	            REJECTED = _promiseTypeSuffixes[2];
+
+	        /**
+	         * @function getAction
+	         * @description Utility function for creating a rejected or fulfilled
+	         * flux standard action object.
+	         * @param {boolean} Is the action rejected?
+	         * @returns {object} action
+	         */
+
+	        var getAction = function getAction(newPayload, isRejected) {
+	          return _extends({
+	            type: type + '_' + (isRejected ? REJECTED : FULFILLED)
+	          }, newPayload === null || typeof newPayload === 'undefined' ? {} : {
+	            payload: newPayload
+	          }, meta !== undefined ? { meta: meta } : {}, isRejected ? {
+	            error: true
+	          } : {});
+	        };
+
+	        /**
+	         * Assign values for promise and data variables. In the case the payload
+	         * is an object with a `promise` and `data` property, the values of those
+	         * properties will be used. In the case the payload is a promise, the
+	         * value of the payload will be used and data will be null.
+	         */
+	        var promise = void 0;
+	        var data = void 0;
+
+	        if (!(0, _isPromise2.default)(action.payload) && _typeof(action.payload) === 'object') {
+	          promise = payload.promise;
+	          data = payload.data;
+	        } else {
+	          promise = payload;
+	          data = undefined;
+	        }
+
+	        /**
+	         * First, dispatch the pending action. This flux standard action object
+	         * describes the pending state of a promise and will include any data
+	         * (for optimistic updates) and/or meta from the original action.
+	         */
+	        next(_extends({
+	          type: type + '_' + PENDING
+	        }, data !== undefined ? { payload: data } : {}, meta !== undefined ? { meta: meta } : {}));
+
+	        /*
+	         * @function handleReject
+	         * @description Dispatch the rejected action and return
+	         * an error object. The error object is the original error
+	         * that was thrown. The user of the library is responsible for
+	         * best practices in ensure that they are throwing an Error object.
+	         * @params reason The reason the promise was rejected
+	         * @returns {object}
+	         */
+	        var handleReject = function handleReject(reason) {
+	          var rejectedAction = getAction(reason, true);
+	          dispatch(rejectedAction);
+	          throw reason;
+	        };
+
+	        /*
+	         * @function handleFulfill
+	         * @description Dispatch the fulfilled action and
+	         * return the success object. The success object should
+	         * contain the value and the dispatched action.
+	         * @param value The value the promise was resloved with
+	         * @returns {object}
+	         */
+	        var handleFulfill = function handleFulfill() {
+	          var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+	          var resolvedAction = getAction(value, false);
+	          dispatch(resolvedAction);
+
+	          return { value: value, action: resolvedAction };
+	        };
+
+	        /**
+	         * Second, dispatch a rejected or fulfilled action. This flux standard
+	         * action object will describe the resolved state of the promise. In
+	         * the case of a rejected promise, it will include an `error` property.
+	         *
+	         * In order to allow proper chaining of actions using `then`, a new
+	         * promise is constructed and returned. This promise will resolve
+	         * with two properties: (1) the value (if fulfilled) or reason
+	         * (if rejected) and (2) the flux standard action.
+	         *
+	         * Rejected object:
+	         * {
+	         *   reason: ...
+	         *   action: {
+	         *     error: true,
+	         *     type: 'ACTION_REJECTED',
+	         *     payload: ...
+	         *   }
+	         * }
+	         *
+	         * Fulfilled object:
+	         * {
+	         *   value: ...
+	         *   action: {
+	         *     type: 'ACTION_FULFILLED',
+	         *     payload: ...
+	         *   }
+	         * }
+	         */
+	        return promise.then(handleFulfill, handleReject);
+	      };
+	    };
+	  };
+	}
+
+/***/ },
+/* 591 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	} : function (obj) {
+	  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	};
+
+	exports.default = isPromise;
+	function isPromise(value) {
+	  if (value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
+	    return value && typeof value.then === 'function';
+	  }
+
+	  return false;
+	}
+
+/***/ },
+/* 592 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(542),
+	    combineReducers = _require.combineReducers;
+
+	var task = __webpack_require__(593);
+	var user = __webpack_require__(594);
+
+	var rootReducer = combineReducers({ task: task, user: user });
+
+	module.exports = rootReducer;
+
+/***/ },
+/* 593 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var actions = __webpack_require__(586);
+	var initState = {
+		tasks: []
+	};
+
+	var taskReducer = function taskReducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
+		var action = arguments[1];
+
+		switch (action.type) {
+			case actions.TASK_GET:
+				{
+					return _extends({}, state);
+				}break;
+			case actions.TASK_GET_ALL:
+				{
+					return _extends({}, state);
+				}break;
+			case actions.TASK_ADD:
+				{
+					var tasks = state.tasks.slice();
+					tasks.push(action.payload);
+					return _extends({}, state, { tasks: tasks });
+				}break;
+			case actions.TASK_EDIT:
+				{
+					return _extends({}, state);
+				}break;
+			case actions.TASK_REMOVE:
+				{
+					return _extends({}, state);
+				}break;
+			default:
+				{
+					return state;
+				}
+		}
+	};
+
+	module.exports = taskReducer;
+
+/***/ },
+/* 594 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var initState = {
+		user: {
+			id: null,
+			name: 'Anonim'
+		}
+	};
+
+	var userReducer = function userReducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
+		var action = arguments[1];
+
+		return state;
+	};
+
+	module.exports = userReducer;
+
+/***/ },
+/* 595 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

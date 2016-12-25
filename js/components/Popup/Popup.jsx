@@ -1,18 +1,47 @@
+require('./Popup.css');
+
 class Popup extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onAdd = this.onAdd.bind(this);
+		this.getTimeString = this.getTimeString.bind(this);
+		this.clearForm = this.clearForm.bind(this);
 	}
-	onAdd() {
+	clearForm() {
+		$(this.refs.form).find('input').val('');
+		$(this.refs.form).find('textarea').val('');
+	}
+	getTimeString() {
 		let date = new Date();
-		let date_str = `${date.getDay()+1}.${date.getMonth()+1}.${date.getYear()}`;
-		console.log(date_str)
+		let day = (date.getDay()+1) < 10 
+			? '0' + (date.getDay()+1) 
+			: (date.getDay()+1);
+		let month = (date.getMonth()+1) < 10 
+			? '0' + (date.getDay()+1)
+			: (date.getMonth()+1);
+		let year = date.getFullYear();
+		let hours = (date.getHours()) < 10 
+			? '0' + (date.getHours())
+			: (date.getHours());
+		let minutes = (date.getMinutes()) < 10 
+			? '0' + (date.getMinutes())
+			: (date.getMinutes());
+		let seconds = (date.getSeconds()) < 10 
+			? '0' + (date.getSeconds())
+			: (date.getSeconds());
+
+		return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+	}
+	onAdd(proxy, event) {
+		proxy.preventDefault();
+
 		let task = {
 			title: this.refs.title.value,
 			description: this.refs.description.value,
 			status: '',
-			date: date_str
+			date: this.getTimeString()
 		}
+		this.clearForm();
 		this.props.add(task);
 	}
 	render() {
@@ -27,10 +56,11 @@ class Popup extends React.Component {
 							</h4>
 						</div>
 						<div className='modal-body'>
-							<form>
+							<form ref="form" onSubmit={ this.onAdd }>
 								<div className="form-group">
 									<label htmlFor="title">Задача</label>
 									<input 
+										autoFocus
 										ref="title"
 										type="text" 
 										className="form-control"

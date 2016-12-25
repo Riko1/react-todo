@@ -24,6 +24,9 @@ body {
 	padding: 8px 12px;
 	margin-bottom: 10px;
 }
+.content-wrapper .button:last-child {
+	margin-bottom: 0;
+}
 
 /*
  * Действия
@@ -40,7 +43,8 @@ body {
 	margin: 0 0 10px;
 	border: 1px solid  #ccc;
 	border-radius: 5px;
-	padding: 7px 9px;
+	padding: 6px 9px;
+	cursor: pointer;
 }
 .task-item:last-child {
 	margin: 0;
@@ -73,8 +77,19 @@ body {
 .task-item__description {
 	display: none;
 	clear: both;
+	font-style: italic;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 5px;
+	top: 7px;
+	position: relative;
 }
-
+.task-item__date {
+	display: block;
+	text-align: right;
+	margin-top: 15px;
+	color: #999;
+}
 
 .task-item.complete {
 	//background-color: #ccc;
@@ -84,4 +99,11 @@ body {
 }
 .task-item.complete .task-item__status {
 	//background-color: skyblue;
+}#modal input:focus,
+#modal textarea:focus {
+	outline: none !important;
+}
+#modal textarea {
+	max-width: 100%;
+	min-height: 140px;
 }

@@ -10,20 +10,6 @@ let Popup = require('../Popup/Popup');
 class TaskList extends React.Component {
 	constructor(props) {
 		super(props);
-		this.data = [
-			{
-				title: 'Задача №1',
-				description: 'desc',
-				date: '26.03.2016',
-				status: ''
-			},
-			{
-				title: 'Задача с длинным пре длинным заголовком',
-				description: 'desc2',
-				date: '20.03.2016',
-				status: 'complete'
-			}
-		]
 
 		this.openPopup = this.openPopup.bind(this);
 		this.add = this.add.bind(this);
@@ -35,7 +21,7 @@ class TaskList extends React.Component {
 	openPopup() {
 		$('#modal').modal('show');
 	}
-
+	
 	render() {
 		//console.log(this.props)
 		var itemsList = this.props.task.tasks.map((item, index) => {
