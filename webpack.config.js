@@ -1,6 +1,17 @@
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path 				= require('path');
+var webpack 			= require('webpack');
+var browserSync			= require('browser-sync');
+var ExtractTextPlugin 	= require('extract-text-webpack-plugin');
+
+let config = {
+	server: {
+		baseDir: "./",
+		index: 'index.html'
+	},
+	files: ['./**/*.js', './**/*.css', './**/*.jsx', './index.html'],
+	host: 'localhost',
+	port: 3000
+}
 
 module.exports = {
 	entry: './js/index.js',
@@ -16,7 +27,7 @@ module.exports = {
 			{
 				test: /\.css$/,
 				exclude: './libs/bootstrap/fonts',
-				loader: ExtractTextPlugin.extract( 'style!css' )
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
 			},
 			{ 
 				test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
@@ -30,12 +41,14 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin('./css/style.css'),
+		new webpack.NoErrorsPlugin(),
+		new ExtractTextPlugin('style.css'),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
 			React: 'react',
 			ReactDOM: 'react-dom'
-		})
+		}),
+		() => browserSync(config)
 	]
 }

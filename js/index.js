@@ -1,35 +1,30 @@
 //Что бы наш код работал и в более старых браузерах
-/*require('babel-polyfill');
+require('babel-polyfill');
+require('../css/stylish.css');
 
-require('jquery');
-require('bootstrap');
- 
-var { 
-	Route, 
+let { 
+	Route,
 	Router, 
 	Redirect, 
 	IndexRoute, 
 	IndexRedirect, 
-	BrowserHistory, 
+	browserHistory, 
 } = require('react-router');
-var Default = require('./pages/Default');
+let { Provider } 	= require('react-redux');
+let Default 		= require('./pages/Default');
+let TaskList 		= require('./components/TaskList/TaskList');
 
-//var TaskList = require('./components/TaskList/TaskList');
-
-//var store = require('./store/store');
+let store = require('./store/store');
 
 $(() => {
-	console.log(document.getElementById('app-wrapper'))
 	ReactDOM.render(
-		<Router history={ BrowserHistory }>
-			<Route path='/' component={ Default } />
-		</Router>,
+		<Provider store={ store }>
+			<Router history={ browserHistory }>
+				<Route path='/' component={ Default } >
+					<IndexRoute component={ TaskList } />
+				</Route>
+			</Router>
+		</Provider>,
 		document.getElementById('app-wrapper')
 	);
-})*/
-$(function() {
-	ReactDOM.render(
-		<div>Привет, мир!</div>,
-		document.getElementById('app-wrapper')
-	)	
-})
+});

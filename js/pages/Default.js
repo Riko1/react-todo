@@ -1,7 +1,9 @@
+require('./Default.css');
+
 var Menu = require('../components/Menu/Menu');
 
 class Default extends React.Component {
-	constructor(propd) {
+	constructor(props) {
 		super(props);
 	}
 	render() {

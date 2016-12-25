@@ -1,4 +1,17 @@
-/*
+body {
+	background: #87CEFA;
+	font-size: 16px;
+}/*
+ * Содержимое страницы
+*/
+.page__content .container {
+	background-color: #fff;
+}/*
+ * Меню навигации
+*/
+.navbar {
+	background-color: #fff;
+}/*
  * Список
 */
 .task-list {
