@@ -30,6 +30,12 @@ let TaskActions = {
 			type: actions.TASK_REMOVE,
 			payload: id
 		}
+	},
+	changeStatus: function(id) {
+		return {
+			type: actions.TASK_CHANGE_STATUS,
+			payload: id
+		}
 	}
 }
 

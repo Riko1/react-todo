@@ -2,6 +2,10 @@
 #modal textarea:focus {
 	outline: none !important;
 }
+#modal .button {
+	background-color: #0084EB;
+	border-color: #0084EB;
+}
 #modal textarea {
 	max-width: 100%;
 	min-height: 140px;

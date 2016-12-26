@@ -1,6 +1,9 @@
 /*
  * Меню навигации
 */
+.navbar-default .navbar-brand {
+	color: #0084EB;
+}
 .navbar {
 	background-color: #fff;
 }

@@ -3,6 +3,9 @@ require('./Popup.css');
 class Popup extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.id = 0;
+
 		this.onAdd = this.onAdd.bind(this);
 		this.getTimeString = this.getTimeString.bind(this);
 		this.clearForm = this.clearForm.bind(this);
@@ -36,6 +39,7 @@ class Popup extends React.Component {
 		proxy.preventDefault();
 
 		let task = {
+			id: this.id++,
 			title: this.refs.title.value,
 			description: this.refs.description.value,
 			status: '',

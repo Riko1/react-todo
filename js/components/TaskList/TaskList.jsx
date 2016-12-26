@@ -11,8 +11,9 @@ class TaskList extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.openPopup = this.openPopup.bind(this);
 		this.add = this.add.bind(this);
+		this.openPopup = this.openPopup.bind(this);
+		this.changeItemStatus = this.changeItemStatus.bind(this);
 	}
 	add(task) {
 		this.props.taskActions.add(task);
@@ -21,11 +22,14 @@ class TaskList extends React.Component {
 	openPopup() {
 		$('#modal').modal('show');
 	}
+	changeItemStatus(id) {
+		this.props.taskActions.changeStatus(id);
+	}
 	
 	render() {
-		//console.log(this.props)
+		console.log(this.props)
 		var itemsList = this.props.task.tasks.map((item, index) => {
-			return <TaskItem key={ index } { ...item } />
+			return <TaskItem key={ index } { ...item } statusChange={ this.changeItemStatus } />
 		});
 
 		return (

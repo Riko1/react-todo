@@ -1,9 +1,6 @@
 /*
- * Список
+ * Контейнер содержимого страницы
 */
-.task-list {
-	margin: 15px 0;
-}
 .content-wrapper .button {
 	min-height: 40px;
 	width: 100%;
@@ -13,6 +10,17 @@
 }
 .content-wrapper .button:last-child {
 	margin-bottom: 0;
+}
+.content-wrapper {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+			user-select: none;
+}
+/*
+ * Список
+*/
+.task-list {
+	margin: 15px 0;
 }
 
 /*
@@ -59,7 +67,7 @@
 	cursor: pointer;
 }
 .task-item__status:hover {
-	background-color: #f7f7f7;
+	background-color: #e6e6e6;
 }
 .task-item__description {
 	display: none;
@@ -79,7 +87,7 @@
 }
 
 .task-item.complete {
-	//background-color: #ccc;
+	background-color: #EDEDED;
 }
 .task-item.complete .task-item__name {
 	text-decoration: line-through;
