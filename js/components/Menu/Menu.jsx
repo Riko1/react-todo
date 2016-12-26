@@ -1,4 +1,5 @@
 require('./Menu.css');
+let { Link } = require('react-router');
 
 class Menu extends React.Component {
 	constructor(props) {
@@ -15,12 +16,23 @@ class Menu extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#">Wrok-list</a>
+                        <Link className="navbar-brand" to="/">Wrok-list</Link>
+
                     </div>
-                    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div 
+                        className="collapse navbar-collapse" 
+                        id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
+                            <li><Link to="/">Link</Link></li>
+                            <li><Link to="/">Link</Link></li>
+                        </ul>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li>
+                                <div 
+                                    className="button btn btn-success login" 
+                                    to="/"
+                                >login</div>
+                            </li>
                         </ul>
                     </div>
                 </div>

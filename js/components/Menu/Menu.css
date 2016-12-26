@@ -7,3 +7,7 @@
 .navbar {
 	background-color: #fff;
 }
+.navbar .login {
+	margin: 8px 0;
+	width: 100px;
+}
